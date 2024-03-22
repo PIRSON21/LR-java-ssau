@@ -1,11 +1,7 @@
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.io.Writer;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Essays implements Int, Serializable {
+public class Essays implements Int {
 
     private final int[] pages;
     private final String name;
@@ -15,47 +11,37 @@ public class Essays implements Int, Serializable {
         this(0, "NULL", 0);
     }
 
-    public Essays(int _count, String _name, int _introduce, int[] array ) {
-        if (_count >= 0) {
-            pages = Arrays.copyOf(array, _count);
-        }
-        else { throw new RuntimeException("Размер массива не может быть отрицательным!"); }
+    public Essays(int _count) {
+        this (_count, "NULL", 0);
+    }
+
+    public Essays(int _count, String _name, int _introduce) {
 
         if (!_name.isEmpty()) { this.name = _name; }
         else { throw new RuntimeException("Имя не может быть пустым!"); }
 
         if (_introduce >= 0) { this.introduce = _introduce; }
         else { throw new RuntimeException("Страницы вступления не могут быть отрицательны!"); }
-
-    }
-
-
-    public Essays(int _count, String _name, int _introduce) {
-        if (_count >= 0) { 
+        if (_count >= 0) {
             pages = new int[_count];
-            int check;
-            Scanner scan = new Scanner(System.in);
-            for (int i = 0; i < pages.length;) {
-                System.out.printf("Введите страницы %d-ой книги: ", i);
-                check = Integer.parseInt(scan.nextLine());
-                if (check < 0) { throw new RuntimeException("Страниц не может быть меньше нуля!"); }
-                else {
-                    pages[i] = check;
-                    i++;
+            if (_name.equals("NULL")) {
+                Arrays.fill(pages, 0);
+            }
+            else {
+                int check;
+                Scanner scan = new Scanner(System.in);
+                for (int i = 0; i < pages.length;) {
+                    System.out.printf("Введите страницы %d-ой книги: ", i);
+                    check = Integer.parseInt(scan.nextLine());
+                    if (check < 0) { throw new RuntimeException("Страниц не может быть меньше нуля!"); }
+                    else {
+                        pages[i] = check;
+                        i++;
+                    }
                 }
             }
         }
         else { throw new RuntimeException("Размер массива не может быть отрицательным!"); }
-
-        if (!_name.isEmpty()) { this.name = _name; }
-        else { throw new RuntimeException("Имя не может быть пустым!"); }
-
-        if (_introduce >= 0) { this.introduce = _introduce; }
-        else { throw new RuntimeException("Страницы вступления не могут быть отрицательны!"); }
-    }
-
-    public Essays(int _count) {
-        this (_count, "NULL", 0);
     }
 
 
@@ -75,30 +61,6 @@ public class Essays implements Int, Serializable {
 
     public int getLen() {
         return pages.length;
-    }
-
-    @Override
-    public void output(OutputStream out) {
-        try {
-            out.write(1);
-            out.write(name.length());
-            out.write(name.getBytes());
-            out.write(introduce);
-            out.write(pages.length);
-            for (int page : pages) { out.write(page); }
-        } catch (IOException e) { throw new RuntimeException(e.getMessage()); }
-    }
-
-    @Override
-    public void write(Writer out) {
-        try {
-            out.write(1 + " ");
-            out.write(name + " ");
-            out.write(introduce + " ");
-            out.write(pages.length + " ");
-            for (int page : pages) { out.write(page + " "); }
-        }
-        catch (IOException e) {throw new RuntimeException(e.getMessage()); }
     }
 
     @Override

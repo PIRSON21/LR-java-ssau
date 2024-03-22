@@ -1,4 +1,6 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class IOMethods {
@@ -19,6 +21,7 @@ public class IOMethods {
 
             if (nameLength == in.read(nameByte)) {
                 String name = new String(nameByte);
+                nameByte = null;
                 int introduce = in.read();
                 int arrayLength = in.read();
                 int[] array = new int[arrayLength];
@@ -37,32 +40,25 @@ public class IOMethods {
             out.write(o.getLen() + " ");
             for (int i = 0; i < o.getLen(); i++) { out.write(o.getElement(i) + " "); }
     }
+
     public static Int readInt(Reader in) throws IOException {
             if (in.ready()) {
                 StreamTokenizer stream = new StreamTokenizer(in);
-                stream.nextToken();
+                int currentToken = stream.nextToken();
                 if (stream.ttype == StreamTokenizer.TT_NUMBER) {
                     int type = (int) stream.nval;
-                    stream.nextToken();
-                    if (stream.ttype == StreamTokenizer.TT_WORD || stream.ttype == StreamTokenizer.TT_NUMBER) {
-                        String name = "";
-                        if (stream.sval == null) {
-                            Double num = stream.nval;
-                            name = String.valueOf((int)stream.nval);
-                        }
-                        else {
-                            name = stream.sval;
-
-                        }
-                        stream.nextToken();
+                    currentToken = stream.nextToken();
+                    if (stream.ttype == StreamTokenizer.TT_WORD) {
+                        String name = stream.sval;
+                        currentToken = stream.nextToken();
                         if (stream.ttype == StreamTokenizer.TT_NUMBER) {
                             int introduce = (int)stream.nval;
-                            stream.nextToken();
+                            currentToken = stream.nextToken();
                             if (stream.ttype == StreamTokenizer.TT_NUMBER) {
                                 int length = (int)stream.nval;
                                 int[] array = new int[length];
                                 for (int i = 0; i < array.length; i++) {
-                                    stream.nextToken();
+                                    currentToken = stream.nextToken();
                                     if (stream.ttype == StreamTokenizer.TT_NUMBER) {
                                         array[i] = (int)stream.nval;
                                     }
@@ -78,58 +74,31 @@ public class IOMethods {
             else throw new IOException("Поток не задан!");
             throw new IOException("Ошибка чтения!");
     }
+
     public static void serializeInt(Int o, OutputStream out) throws IOException {
         ObjectOutputStream objOut = new ObjectOutputStream(out);
         objOut.writeObject(o);
     }
+
     public static Int deserializeInt(InputStream in) throws IOException, ClassNotFoundException {
         ObjectInputStream objIn = new ObjectInputStream(in);
         return (Int)objIn.readObject();
     }
+
     public static void writeFormatInt(Int o, Writer out) throws IOException {
-        out.write("Название серии: '" + o.getName() + "'\n");
+        out.write("Название серии: '" + o.getName() + "'\n"); ;
         out.write( "Тип серии: 'Серия статей'\n");
         out.write( "Кол-во статей: '" + o.getLen() + "'\n");
         out.write( "Кол-во страниц в статьях:\n");
         for (int i = 0; i < o.getLen(); i++) {
             out.write( o.getElement(i) + " ");
         }
-        out.write("\n");
-        out.write( "Кол-во вводных страниц: '" + o.getIntroduce() + "'\n");
+        out.write( "\nКол-во вводных страниц: '" + o.getIntroduce() + "'\n");
     }
+
     public static Int readFormatInt(Scanner in) {
-        String name = "";
-        int len = 0;
-        int[] elements;
-        int introduce = 0;
-        String nextLine;
-
-        if (in.hasNextLine()) {
-            nextLine = in.nextLine();
-            name = nextLine.substring("Название серии: '".length(), nextLine.length() - 1);
-        }
-
-        in.nextLine();
-
-        if (in.hasNextLine()) {
-            nextLine = in.nextLine();
-            len = Integer.parseInt(nextLine.substring("Кол-во статей: '".length(), nextLine.length() - 1));
-        }
-
-        in.nextLine();
-
-        elements = new int[len];
-        if (in.hasNextLine()) {
-            String[] pages = in.nextLine().split(" ");
-            for (int i = 0; i < len; i++) {
-                elements[i] = Integer.parseInt(pages[i]);
-            }
-        }
-
-        if (in.hasNextLine()) {
-            nextLine = in.nextLine();
-            introduce = Integer.parseInt(nextLine.substring("Кол-во вводных страниц: '".length(), nextLine.length() - 1));
-        }
-        return new Articles(elements.length, name, introduce, elements);
+        in.useDelimiter("'");
+        while (in.hasNext()) { in.next(); }
+        return null;
     }
 }

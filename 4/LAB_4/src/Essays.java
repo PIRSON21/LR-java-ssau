@@ -109,7 +109,7 @@ public class Essays implements Int, Serializable {
     @Override
     public int calcPages() throws PagesLessZeroException {
         int res = 0;
-        int midTerm;
+        int midTerm = 0;
         for (int page: pages) {
             midTerm = page - introduce;
             if (midTerm > -1) { res += midTerm; }
