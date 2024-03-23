@@ -102,11 +102,11 @@ public class Essays implements Int {
                             }
                             catch (Exception e) { return false; }
                         } return true;
-                    } else { return false; }
-                } else { return false; }
-            } else { return false; }
+                    }
+                }
+            }
         }
-        else { return false; }
+        return false;
     }
 
     @Override

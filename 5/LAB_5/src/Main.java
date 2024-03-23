@@ -22,8 +22,6 @@ public class Main {
                     int length = scan.nextInt();
                     Int obj = new Essays(length);
                     System.out.println("====УСПЕШНО====\n");
-
-
                     Thread readThread = new ReadThread(obj);
                     Thread writeThread = new WriteThread(obj);
 
@@ -46,10 +44,7 @@ public class Main {
                     Thread write =  new Thread(new WriteSyncThread(intSynchronizer));
                     read.start();
                     write.start();
-
-
                     System.out.println("====УСПЕШНО====\n");
-
                     break;
                 case "3":
                     break;
