@@ -7,6 +7,10 @@
       <excludeFolder url="file://$MODULE_DIR$/3/LAB_3/out" />
       <excludeFolder url="file://$MODULE_DIR$/4/LAB_4/out" />
       <excludeFolder url="file://$MODULE_DIR$/5/LAB_5/out" />
+      <excludeFolder url="file://$MODULE_DIR$/2/LAB_2/.idea/copilot" />
+      <excludeFolder url="file://$MODULE_DIR$/2/LAB_2/.idea/copilot/chatSessions" />
+      <excludeFolder url="file://$MODULE_DIR$/3/LAB_3/.idea/copilot" />
+      <excludeFolder url="file://$MODULE_DIR$/3/LAB_3/.idea/copilot/chatSessions" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
