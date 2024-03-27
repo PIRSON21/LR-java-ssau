@@ -98,7 +98,14 @@ public class Main {
                             PrintOutArray(array);
                         }
                     }
-                    catch (RuntimeException | PagesLessZeroException e) {
+                    catch (PagesLessZeroException e) {
+                        System.out.println("====ОШИБКА====");
+                        System.out.println("В серии " + e.getMessage() + "-ый элемент меньше нуля" + "\n");
+                        String name = e.getMessage().split(" ")[0];
+                        int index = Integer.parseInt(e.getMessage().split(" ")[1]);
+                        replaceElement(name, index);
+                    }
+                    catch (RuntimeException  e) {
                         System.out.println("====ОШИБКА====");
                         System.out.println(e.getMessage() + "\n");
                     }
@@ -151,6 +158,17 @@ public class Main {
 
     }
 
+    private static void replaceElement(String name, int index) {
+        for (Int el: array) {
+            if (el.getName().equals(name)) {
+                System.out.print("Введите, сколько страниц будет в " + index + "-ой книге: ");
+                Scanner scan = new Scanner(System.in);
+                int value = Integer.parseInt(scan.nextLine());
+                el.setElement(index - 1, value);
+                System.out.println("====УСПЕШНО====\n");
+            }
+        }
+    }
 
 
     private static Int[][] FindCommonRes() throws PagesLessZeroException {
@@ -160,7 +178,7 @@ public class Main {
         int c = 0;
         for (int i = 0; i < array.length; i++) {
             uniqueInts = new ArrayList<>();
-            int num = 0;
+            int num;
             try {
                 num = array[i].calcPages();
                 if (!uniqueNum.contains(num)) {
@@ -180,7 +198,6 @@ public class Main {
             } catch (PagesLessZeroException e) {
                 throw new PagesLessZeroException(e.getMessage());
             }
-
         }
         return res;
     }

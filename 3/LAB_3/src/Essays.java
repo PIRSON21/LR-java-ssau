@@ -67,10 +67,10 @@ public class Essays implements Int {
     public int calcPages() throws PagesLessZeroException {
         int res = 0;
         int midTerm = 0;
-        for (int page: pages) {
-            midTerm = page - introduce;
+        for (int i = 0; i < pages.length; i++) {
+            midTerm = pages[i] - introduce;
             if (midTerm > -1) { res += midTerm; }
-            else { throw new PagesLessZeroException("Кол-во страниц без вступления меньше нуля!"); }
+            else { throw new PagesLessZeroException(this.name + " " + (i + 1)); }
         }
         return res;
     }
