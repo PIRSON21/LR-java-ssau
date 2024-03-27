@@ -42,8 +42,17 @@ public class Main {
                     IntSynchronizer intSynchronizer = new IntSynchronizer(obj);
                     Thread read = new Thread(new ReadSyncThread(intSynchronizer));
                     Thread write =  new Thread(new WriteSyncThread(intSynchronizer));
+//                    obj.notify();
                     read.start();
                     write.start();
+                    try {
+                        read.join();
+                    } catch (InterruptedException ignored) {
+                    }
+                    try {
+                        write.join();
+                    } catch (InterruptedException ignored) {
+                    }
                     System.out.println("====УСПЕШНО====\n");
                     break;
                 case "3":

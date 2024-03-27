@@ -4,15 +4,20 @@ public class WriteSyncThread implements Runnable {
 
     public WriteSyncThread(IntSynchronizer p) {
         obj = p;
+        obj.notify();
     }
 
     @Override
     public void run() {
-        try {
-            obj.Write();
-        } catch (InterruptedException ignored) {
-            System.out.println("Ошибка WriteSyncThread");
+        System.out.println("Write method started");
+        for (int i = 0; i < obj.getLen(); i++) {
+            try {
+                obj.Write(i);
+            } catch (InterruptedException ignored) {
+                System.out.println("Ошибка WriteSyncThread");
+            }
         }
+
     }
 
 
