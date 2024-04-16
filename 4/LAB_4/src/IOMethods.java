@@ -97,8 +97,36 @@ public class IOMethods {
     }
 
     public static Int readFormatInt(Scanner in) {
-        in.useDelimiter("'");
-        while (in.hasNext()) { in.next(); }
-        return null;
+        String name = "";
+        int len = 0;
+        int introduce = 0;
+        String nextLine;
+        if (in.hasNextLine()) {
+            nextLine = in.nextLine();
+            name = nextLine.substring("Название серии: '".length(), nextLine.length() - 1);
+        }
+
+        in.nextLine();
+        if (in.hasNextLine()) {
+            nextLine = in.nextLine();
+            len = Integer.parseInt(nextLine.substring("Кол-во статей: '".length(), nextLine.length() - 1));
+        }
+
+        in.nextLine();
+        int[] elements = new int[len];
+        if (in.hasNextLine()) {
+            String[] pages = in.nextLine().split(" ");
+
+            for(int i = 0; i < len; ++i) {
+                elements[i] = Integer.parseInt(pages[i]);
+            }
+        }
+
+        if (in.hasNextLine()) {
+            nextLine = in.nextLine();
+            introduce = Integer.parseInt(nextLine.substring("Кол-во вводных страниц: '".length(), nextLine.length() - 1));
+        }
+
+        return new Articles(elements.length, name, introduce, elements);
     }
 }
