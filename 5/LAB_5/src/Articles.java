@@ -1,19 +1,32 @@
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Serializable;
+import java.io.Writer;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Articles implements Int {
-
+public class Articles implements Int, Serializable {
 
     private final int[] pages;
     private final String name;
     private final int introduce;
-    private int check;
 
     public Articles() {
         this(0, "NULL", 0);
     }
 
-    public Articles(int _count) {
-        this (_count, "NULL", 0);
+    public Articles(int _count, String _name, int _introduce, int[] array ) {
+        if (_count >= 0) {
+            pages = Arrays.copyOf(array, _count);
+        }
+        else { throw new RuntimeException("Размер массива не может быть отрицательным!"); }
+
+        if (!_name.isEmpty()) { this.name = _name; }
+        else { throw new RuntimeException("Имя не может быть пустым!"); }
+
+        if (_introduce >= 0) { this.introduce = _introduce; }
+        else { throw new RuntimeException("Страницы вступления не могут быть отрицательны!"); }
+
     }
 
     public Articles(int _count, String _name, int _introduce) {
@@ -27,7 +40,8 @@ public class Articles implements Int {
                 if (check < 0) { throw new RuntimeException("Страниц не может быть меньше нуля!"); }
                 else {
                     pages[i] = check;
-                    i++;                }
+                    i++;
+                }
             }
         }
         else { throw new RuntimeException("Размер массива не может быть отрицательным!"); }
@@ -37,6 +51,10 @@ public class Articles implements Int {
 
         if (_introduce >= 0) { this.introduce = _introduce; }
         else { throw new RuntimeException("Страницы вступления не могут быть отрицательны!"); }
+    }
+
+    public Articles(int _count) {
+        this (_count, "NULL", 0);
     }
 
     @Override
@@ -61,10 +79,11 @@ public class Articles implements Int {
         return introduce;
     }
 
+
     @Override
     public int calcPages() throws PagesLessZeroException {
         int res = 0;
-        int midTerm = 0;
+        int midTerm;
         for (int page: pages) {
             midTerm = page - introduce;
             if (midTerm > -1) { res += midTerm; }
@@ -108,6 +127,30 @@ public class Articles implements Int {
     @Override
     public int getLen() {
         return pages.length;
+    }
+
+    @Override
+    public void output(OutputStream out) {
+        try {
+            out.write(2);
+            out.write(name.length());
+            out.write(name.getBytes());
+            out.write(introduce);
+            out.write(pages.length);
+            for (int page : pages) { out.write(page); }
+        } catch (IOException e) { throw new RuntimeException(e.getMessage()); }
+    }
+
+    @Override
+    public void write(Writer out) {
+        try {
+            out.write(2 + " ");
+            out.write(name + " ");
+            out.write(introduce + " ");
+            out.write(pages.length + " ");
+            for (int page : pages) { out.write(page + " "); }
+        }
+        catch (IOException e) {throw new RuntimeException(e.getMessage()); }
     }
 
     @Override

@@ -1,37 +1,44 @@
-import java.util.Random;
-
 public class IntSynchronizer {
-    private final Int object;
-    private final Random rand = new Random();
+    private final Int obj;
+    private volatile int current = 0;
+    private final Object isLocked = new Object();
+    private boolean set = false;
 
-    public IntSynchronizer(Int _obj) {
-        object = _obj;
+    public IntSynchronizer(Int i) {
+        this.obj = i;
     }
 
-    public void Write() throws InterruptedException {
-        System.out.println("Write method started");
-        for (int i = 0; i < object.getLen(); i++) {
+    public int read() throws InterruptedException {
+        int val;
+        synchronized(isLocked) {
+            if (!canRead()) throw new InterruptedException();
+            while (!set)
+                isLocked.wait();
+            val = obj.getElement(current++);
+            System.out.printf("Read: " + val + " from position " + (current - 1) + "\n");
+            set = false;
+            isLocked.notifyAll();
+        }
+        return val;
+    }
 
-            synchronized (object) {
-                object.wait();
-                int l = rand.nextInt(100);
-                object.setElement(i, l);
-                System.out.printf("Write: " + l + " to position " + i + "\n");
-                object.notify();
-            }
-
+    public void write(int val) throws InterruptedException {
+        synchronized(isLocked) {
+            if (!canWrite()) throw new InterruptedException();
+            while (set)
+                isLocked.wait();
+            obj.setElement(current, val);
+            System.out.printf("Write: " + val + " to position " + current + "\n");
+            set = true;
+            isLocked.notifyAll();
         }
     }
 
-    public void Read() throws InterruptedException {
-        System.out.println("Read method started");
-        for (int i = 0; i < object.getLen(); i++) {
-            synchronized (object) {
-                object.wait();
-                System.out.printf("Read: " + object.getElement(i) + " from position " + i + "\n");
-                object.notify();
-            }
+    public boolean canRead() {
+        return current < obj.getLen();
+    }
 
-        }
+    public boolean canWrite() {
+        return (!set && current < obj.getLen()) || (set && current < obj.getLen() - 1);
     }
 }

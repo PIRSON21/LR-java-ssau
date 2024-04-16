@@ -1,15 +1,13 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
-    public static Int[] array;
+    private static final Scanner scan = new Scanner(System.in);
 
+    public static Int[] array;
     public static void main(String[] s) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("====ЛАБОРАТОРНАЯ РАБОТА №3====");
+        System.out.println("====ЛАБОРАТОРНАЯ РАБОТА №4====");
         while (array == null) {
             try {
                 System.out.println("====СОЗДАНИЕ МАССИВА====");
@@ -84,15 +82,16 @@ public class Main {
             System.out.println("2. Работа с текстовым потоком");
             System.out.println("3. Сериализация");
             System.out.println("4. Форматный ввод/вывод");
+            System.out.println("5. Вывод массива в консоль");
             System.out.println("0. Выход из программы");
-            System.out.print("Выберете пункт меню: ");
+            System.out.print("Выберите пункт меню: ");
             switch (scan.nextLine()) {
                 case "1":
                     System.out.println("\n====БАЙТОВЫЙ ПОТОК====");
                     System.out.println("1. Записать массив в байтовый поток");
                     System.out.println("2. Считать массив из байтового потока");
                     System.out.println("0. Назад в меню");
-                    System.out.print("Выберете пункт меню: ");
+                    System.out.print("Выберите пункт меню: ");
                     String menu = scan.nextLine();
                     if (menu.equals("1")) {
                         try {
@@ -100,7 +99,7 @@ public class Main {
                             System.out.println("====УСПЕШНО====");
                         } catch (IOException e) {
                             System.out.println("====ОШИБКА====");
-                            System.out.println("Возникла ошибка. " + e.getLocalizedMessage());
+                            System.out.println("Возникла ошибка.\n" + e.getLocalizedMessage());
                         }
                     } else if (menu.equals("2")) {
                         try {
@@ -108,7 +107,7 @@ public class Main {
                             System.out.println("====УСПЕШНО====");
                         } catch (IOException e) {
                             System.out.println("====ОШИБКА====");
-                            System.out.println("Возникла ошибка. " + e.getLocalizedMessage());
+                            System.out.println("Возникла ошибка.\n" + e.getLocalizedMessage());
                         }
                     } else {
                         System.out.println("====ОШИБКА====");
@@ -120,7 +119,7 @@ public class Main {
                     System.out.println("1. Записать массив в текстовый поток");
                     System.out.println("2. Считать массив из текстового потока");
                     System.out.println("0. Назад в меню");
-                    System.out.print("Выберете пункт меню: ");
+                    System.out.print("Выберите пункт меню: ");
                     switch (scan.nextLine()) {
                         case "1":
                             try {
@@ -128,7 +127,7 @@ public class Main {
                                 System.out.println("====УСПЕШНО====");
                             } catch (IOException e) {
                                 System.out.println("====ОШИБКА====");
-                                System.out.println("Возникла ошибка. " + e.getLocalizedMessage());
+                                System.out.println("Возникла ошибка.\n" + e.getLocalizedMessage());
                             }
                             break;
                         case "2":
@@ -137,7 +136,7 @@ public class Main {
                                 System.out.println("====УСПЕШНО====");
                             } catch (IOException e) {
                                 System.out.println("====ОШИБКА====");
-                                System.out.println("Возникла ошибка" + e.getLocalizedMessage());
+                                System.out.println("Возникла ошибка.\n" + e.getLocalizedMessage());
                             }
                             break;
                     }
@@ -147,7 +146,7 @@ public class Main {
                     System.out.println("1. Сериализовать массив");
                     System.out.println("2. Десериализовать массив");
                     System.out.println("0. Назад в меню");
-                    System.out.print("Выберете пункт меню: ");
+                    System.out.print("Выберите пункт меню: ");
                     switch (scan.nextLine()) {
                         case "1":
                             try {
@@ -155,7 +154,7 @@ public class Main {
                                 System.out.println("====УСПЕШНО====");
                             } catch (IOException e) {
                                 System.out.println("====ОШИБКА====");
-                                System.out.println("Возникла ошибка. " + e.getLocalizedMessage());
+                                System.out.println("Возникла ошибка.\n" + e.getLocalizedMessage());
                             }
                             break;
                         case "2":
@@ -164,7 +163,7 @@ public class Main {
                                 System.out.println("====УСПЕШНО====");
                             } catch (IOException | ClassNotFoundException e) {
                                 System.out.println("====ОШИБКА====");
-                                System.out.println("Возникла ошибка" + e.getLocalizedMessage());
+                                System.out.println("Возникла ошибка.\n" + e.getLocalizedMessage());
                             }
                             break;
                     }
@@ -174,27 +173,30 @@ public class Main {
                     System.out.println("1. Форматный вывод в файл");
                     System.out.println("2. Форматный ввод из файла");
                     System.out.println("0. Назад в меню");
-                    System.out.print("Выберете пункт меню: ");
+                    System.out.print("Выберите пункт меню: ");
                     switch (scan.nextLine()) {
                         case "1":
                             try {
                                 writeFormat();
                                 System.out.println("====УСПЕШНО====");
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 System.out.println("====ОШИБКА====");
-                                System.out.println("Возникла ошибка. " + e.getLocalizedMessage());
+                                System.out.println("Возникла ошибка.\n" + e.getLocalizedMessage());
                             }
                             break;
                         case "2":
                             try {
                                 array = readFormat();
                                 System.out.println("====УСПЕШНО====");
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 System.out.println("====ОШИБКА====");
-                                System.out.println("Возникла ошибка" + e.getLocalizedMessage());
+                                System.out.println("Возникла ошибка.\n" + e.getLocalizedMessage());
                             }
                             break;
                     }
+                    break;
+                case "5":
+                    PrintOutArray(array);
                     break;
                 case "0":
                     System.out.println("====ЗАВЕРШЕНИЕ РАБОТЫ====");
@@ -210,20 +212,16 @@ public class Main {
 
 
     }
-
     private static Int[] readFormat() throws IOException {
 
         System.out.println("\n====ФОРМАТНЫЙ ВВОД====");
-        System.out.print("Введите название файла: ");
-        Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-        File file = new File("./", fileName + ".txt");
+        File file = CreateNewFile("r", ".txt");
         if (file.exists() && file.canRead()) {
             Scanner in = new Scanner(file);
             Int[] res;
             int arrayLength;
             if (in.hasNextInt()) {
-                arrayLength = in.nextInt();
+                arrayLength = Integer.parseInt(in.nextLine());
                 res = new Int[arrayLength];
                 for (int i = 0; i < arrayLength; i++) {
                     res[i] = IOMethods.readFormatInt(in);
@@ -234,16 +232,15 @@ public class Main {
         }
         throw new IOException();
     }
-
     private static void writeFormat() throws IOException {
         System.out.println("\n====ФОРМАТНЫЙ ВЫВОД====");
-        System.out.print("Введите название файла: ");
-        Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-        File file = new File("./" + fileName + ".txt");
+        File file = CreateNewFile("w", ".txt");
         while (!(file.exists() && file.canWrite())) {
-            file.delete();
-            file.createNewFile();
+            if (file.delete()) {
+                if (!file.createNewFile()) {
+                    throw new IOException("Ошибка создания файла");
+                }
+            }
         }
         Writer out = new FileWriter(file);
         out.write(array.length + "\n");
@@ -254,14 +251,9 @@ public class Main {
             out.close();
         } catch (IOException e) {e.getLocalizedMessage();}
 }
-
     private static Int[] deserialize() throws IOException, ClassNotFoundException {
         System.out.println("\n====ДЕСЕРИАЛИЗАЦИЯ====");
-        System.out.print("Введите название файла: ");
-        Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-
-        File file = new File("./" + fileName + ".bin");
+        File file = CreateNewFile("r", ".bin");
         if (file.exists() && file.canRead()) {
             InputStream in = new FileInputStream(file);
             int arrayLength = in.read();
@@ -271,24 +263,14 @@ public class Main {
             }
             try {
                 in.close();
-            } catch (IOException e ) {e.printStackTrace();}
+            } catch (IOException ignored) {}
             return res;
         }
         else { throw new IOException(); }
     }
-
     private static void serialize() throws IOException {
         System.out.println("\n====СЕРИАЛИЗАЦИЯ====");
-        System.out.print("Введите название файла: ");
-        Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-
-        File file = new File("./" + fileName + ".bin");
-        while (!(file.exists() && file.canWrite())) {
-            file.delete();
-            file.createNewFile();
-        }
-
+        File file = CreateNewFile("w", ".bin");
         OutputStream out = new FileOutputStream(file);
         out.write(array.length);
         for (Int el: array) {
@@ -296,21 +278,11 @@ public class Main {
         }
         try {
             out.close();
-        } catch (IOException e ) {e.printStackTrace();}
+        } catch (IOException ignored) {}
     }
-
     private static void binaryOutput() throws IOException {
         System.out.println("\n====БИНАРНЫЙ ВЫВОД====");
-        System.out.print("Введите название файла: ");
-        Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-
-        File file = new File("./" + fileName + ".bin");
-        while (!(file.exists() && file.canWrite())) {
-            file.delete();
-            file.createNewFile();
-        }
-
+        File file = CreateNewFile("w", ".bin");
         OutputStream out = new FileOutputStream(file);
         out.write(array.length);
         for (Int el: array) {
@@ -319,18 +291,41 @@ public class Main {
 
         try {
             out.close();
-        } catch (IOException e ) {e.printStackTrace();}
+        } catch (IOException ignored) {}
 
 
     }
-
+    private static File CreateNewFile(String way, String type) throws IOException {
+        System.out.print("Введите название файла: ");
+        String fileName = scan.nextLine();
+        File file = new File("./data/" + fileName + type);
+        if (way.equals("w")) {
+            file.createNewFile();
+            while (!(file.exists() && file.canWrite())) {
+                if (file.delete()) {
+                    if (!file.createNewFile()) {
+                        throw new IOException("Ошибка создания файла");
+                    }
+                }
+            }
+        }
+        else {
+            if (file.exists()) {
+                while(!file.canRead()) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ignored) {}
+                }
+            }
+            else {
+                throw new IOException("Ошибка открытия файла");
+            }
+        }
+        return file;
+    }
     private static Int[] binaryInput() throws IOException {
         System.out.println("\n====БИНАРНЫЙ ВВОД====");
-        System.out.print("Введите название файла: ");
-        Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-
-        File file = new File("./" + fileName + ".bin");
+        File file = CreateNewFile("r", ".bin");
         if (file.exists() && file.canRead()) {
             InputStream in = new FileInputStream(file);
             int arrayLength = in.read();
@@ -341,25 +336,20 @@ public class Main {
 
             try {
                 in.close();
-            } catch (IOException e ) {e.printStackTrace();}
+            } catch (IOException ignored) {}
             return res;
         }
         else { throw new IOException(); }
 
 
     }
-
     private static Int[] textInput() throws IOException {
         System.out.println("\n====ТЕКСТОВЫЙ ВВОД====");
-        System.out.print("Введите название файла: ");
-        Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-
-        File file = new File("./", fileName + ".txt");
+        File file = CreateNewFile("r", ".txt");
         if (file.exists() && file.canRead()) {
             Reader in = new FileReader(file);
             StreamTokenizer stream = new StreamTokenizer(in);
-            int currentToken = stream.nextToken();
+            stream.nextToken();
             Int[] res;
             int arrayLength;
             if (stream.ttype == StreamTokenizer.TT_NUMBER) {
@@ -376,94 +366,19 @@ public class Main {
         }
         throw new IOException();
     }
-
-
     private static void textOutput() throws IOException {
         System.out.println("\n====ТЕКСТОВЫЙ ВЫВОД====");
-        System.out.print("Введите название файла: ");
-        Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-
-
-        File file = new File("./" + fileName + ".txt");
-        while (!(file.exists() && file.canWrite())) {
-            file.delete();
-            file.createNewFile();
-        }
-
+        File file = CreateNewFile("w", ".txt");
         Writer out = new FileWriter(file);
-
         out.write(array.length + "\n");
-
         for (Int el: array) {
             el.write(out);
             out.write("\n");
         }
-
         try {
             out.close();
         } catch (IOException e) {e.getLocalizedMessage();}
     }
-
-    private static Int[][] FindCommonRes() throws PagesLessZeroException {
-        Int[][] res = new Int[0][];
-        ArrayList<Integer> uniqueNum =  new ArrayList<>() ;
-        ArrayList<Int> uniqueInts;
-        int c = 0;
-        for (int i = 0; i < array.length; i++) {
-            uniqueInts = new ArrayList<>();
-            int num = 0;
-            try {
-                num = array[i].calcPages();
-                if (!uniqueNum.contains(num)) {
-                    uniqueNum.add(num);
-                    for (int j = i + 1; j < array.length; j++) {
-                        if (num == array[j].calcPages()) {
-                            uniqueInts.add(array[j]);
-                        }
-                    }
-                    if (!uniqueInts.contains(array[i])) {
-                        uniqueInts.add(array[i]);
-                    }
-                    res = Arrays.copyOf(res, res.length + 1);
-                    res[c] = uniqueInts.toArray(new Int[0]);
-                    c++;
-                }
-            } catch (PagesLessZeroException e) {
-                throw new PagesLessZeroException(e.getMessage());
-            }
-
-        }
-        return res;
-    }
-
-    private static Int[][] SplitByType() {
-
-        int essays = 0;
-        int articles = 0;
-        for (Int anInt : array) {
-            if (anInt.getClass().equals(Essays.class)) { essays++; }
-            else if (anInt.getClass().equals(Articles.class)) {  articles++; }
-        }
-
-        Int[][] result = new Int[2][];
-        result[0] = new Int[essays];
-        result[1] = new Int[articles];
-        essays = 0;
-        articles = 0;
-        for (Int anInt : array) {
-            if (anInt.getClass().equals(Essays.class)) {
-                result[0][essays] = anInt;
-                essays++;
-            } else if (anInt.getClass().equals(Articles.class)) {
-                result[1][articles] = anInt;
-                articles++;
-            }
-        }
-        return result;
-    }
-
-
     private static void PrintOutArray(Int[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.println("====ЭЛЕМЕНТ #" + (i + 1) + "====");
