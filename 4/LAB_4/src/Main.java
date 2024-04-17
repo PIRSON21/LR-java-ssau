@@ -286,9 +286,8 @@ public class Main {
         OutputStream out = new FileOutputStream(file);
         out.write(array.length);
         for (Int el: array) {
-            el.output(out);
+            IOMethods.outputInt(el, out);
         }
-
         try {
             out.close();
         } catch (IOException ignored) {}
@@ -372,7 +371,7 @@ public class Main {
         Writer out = new FileWriter(file);
         out.write(array.length + "\n");
         for (Int el: array) {
-            el.write(out);
+            IOMethods.writeInt(el, out);
             out.write("\n");
         }
         try {

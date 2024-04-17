@@ -4,13 +4,7 @@ import java.util.Scanner;
 public class IOMethods {
 
     public static void outputInt(Int o, OutputStream out) throws IOException {
-            if (o.getClass().equals(Essays.class)) { out.write(1);}
-            else { out.write(2);}
-            out.write(o.getName().length());
-            out.write(o.getName().getBytes());
-            out.write(o.getIntroduce());
-            out.write(o.getLen());
-            for (int i = 0; i < o.getLen(); i++) { out.write(o.getElement(i)); }
+        o.output(out);
     }
     public static Int inputInt(InputStream in) throws IOException {
             int type = in.read();
@@ -30,12 +24,7 @@ public class IOMethods {
             } else throw new IOException();
     }
     public static void writeInt(Int o, Writer out) throws IOException {
-            if (o.getClass().equals(Essays.class)) { out.write(1 + " ");}
-            else { out.write(2 + " ");}
-            out.write(o.getName() + " ");
-            out.write(o.getIntroduce() + " ");
-            out.write(o.getLen() + " ");
-            for (int i = 0; i < o.getLen(); i++) { out.write(o.getElement(i) + " "); }
+            o.write(out);
     }
     public static Int readInt(Reader in) throws IOException {
             if (in.ready()) {
