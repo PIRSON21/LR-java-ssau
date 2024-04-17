@@ -4,30 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a97b5b2b-44a4-490c-aff6-3d99e441ee5c" name="Changes" comment="Created repository">
-      <change afterPath="$PROJECT_DIR$/LR-java-ssau/1/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LR-java-ssau/2/LAB_2/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LR-java-ssau/3/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LR-java-ssau/4/answers.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LR-java-ssau/5/answers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/LAB_5.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/Articles.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/Essays.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/Int.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/IntSynchronizer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/PagesLessZeroException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/ReadSyncThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/ReadThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/WriteSyncThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LR-java-ssau/5/LAB_5/src/WriteThread.java" beforeDir="false" />
+    <list default="true" id="a97b5b2b-44a4-490c-aff6-3d99e441ee5c" name="Changes" comment="Deleted LR-java-ssau">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,18 +21,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "PIRSON21"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PIRSON21&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/PIRSON21/LR-java-ssau.git",
-    "accountId": "a0ba094b-e1ae-4b9a-886c-2ced72180b44"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/PIRSON21/LR-java-ssau.git&quot;,
+    &quot;accountId&quot;: &quot;a0ba094b-e1ae-4b9a-886c-2ced72180b44&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -70,7 +49,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Egor/Документы/Predmeti/Java",
     "node.js.detected.package.eslint": "true",
@@ -98,6 +77,8 @@
       <updated>1711087945876</updated>
       <workItem from="1711087946865" duration="1076000" />
       <workItem from="1712816419459" duration="865000" />
+      <workItem from="1713287057000" duration="165000" />
+      <workItem from="1713333449609" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="Created repository">
       <option name="closed" value="true" />
@@ -107,7 +88,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711088151749</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Deleted LR-java-ssau">
+      <option name="closed" value="true" />
+      <created>1713287125098</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713287125098</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created repository" />
+    <MESSAGE value="Deleted LR-java-ssau" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted LR-java-ssau" />
   </component>
 </project>
