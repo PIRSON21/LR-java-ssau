@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
@@ -22,7 +24,8 @@ public class Main {
                     Thread.sleep(200);
                 }
             } catch (InterruptedException ignored) { }
-            switch (scan.nextLine()) {
+            String choice = scan.nextLine();
+            switch (choice) {
                 case "1":
                     obj = CreateEssays();
                     System.out.println("====УСПЕШНО====\n");
@@ -56,8 +59,29 @@ public class Main {
                     } catch (InterruptedException ignored) {}
                     break;
                 case "3":
-                    // TODO: ДОДЕЛАТЬ 3-Й НОМЕР
-                    System.out.println();
+                    obj = CreateEssays();
+                    System.out.println("====УСПЕШНО====\n");
+                    SynchronizedInt synchronizedInt = IOMethods.synchronizedInt(obj);
+                    Thread thread1 = new ReadThread(synchronizedInt);
+                    thread1.setName("ReadThread");
+                    Thread thread2 = new WriteThread(synchronizedInt);
+                    thread2.setName("WriteThread");
+
+                    Thread checkThread1 = new CheckThread(thread1);
+                    Thread checkThread2 = new CheckThread(thread2);
+
+                    thread1.start();
+                    thread2.start();
+
+                    checkThread1.start();
+                    checkThread2.start();
+
+                    try {
+                        thread2.join();
+                        thread1.join();
+                        checkThread1.join();
+                        checkThread2.join();
+                    } catch (InterruptedException ignored) {}
                     break;
                 case "0":
                     System.out.println("====ЗАВЕРШЕНИЕ РАБОТЫ====");
@@ -65,7 +89,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("====ОШИБКА====");
-                    System.out.println("Введено не правильное значение!\n");
+                    System.out.println("Введено неправильное значение!\n");
                     break;
             }
 
@@ -86,4 +110,6 @@ public class Main {
         int length = scan.nextInt();
         return new Essays(length);
     }
+
+
 }

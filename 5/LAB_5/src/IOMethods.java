@@ -101,4 +101,8 @@ public class IOMethods {
         while (in.hasNext()) { in.next(); }
         return null;
     }
+
+    public static SynchronizedInt synchronizedInt(Int i) {
+        return new SynchronizedInt(i);
+    }
 }

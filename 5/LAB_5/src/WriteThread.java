@@ -17,6 +17,9 @@ public class WriteThread extends Thread {
         for (int i = 0; i < object.getLen(); i++) {
             int l = rand.nextInt(100);
             object.setElement(i, l);
+            if (Thread.currentThread().getState() == State.WAITING) {
+                System.out.println(Thread.currentThread().getName() + "is waiting");
+            }
             System.out.printf("Write: " + l + " to position " + i + "\n");
         }
     }
@@ -26,9 +29,4 @@ public class WriteThread extends Thread {
         System.out.println(getClass().getName() + " started");
         super.start();
     }
-
-    // TODO: 29.02.2024 11:33 написал классы для первого задания
-    //  нет в мейне использования, плюс ругаются методы, потому что я удалил array из main
-
-
 }

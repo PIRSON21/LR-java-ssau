@@ -14,6 +14,9 @@ public class ReadThread extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < object.getLen(); i++) {
+            if (Thread.currentThread().getState() == State.WAITING) {
+                System.out.println(Thread.currentThread().getName() + "is waiting");
+            }
             Random rand = new Random();
             System.out.printf("Read: " + object.getElement(i) + " from position " + i + "\n");
         }
