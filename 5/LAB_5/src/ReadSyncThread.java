@@ -1,22 +1,21 @@
 public class ReadSyncThread implements Runnable {
 
     private volatile IntSynchronizer obj;
+    private Thread cur;
 
     public ReadSyncThread(IntSynchronizer p) {
         obj = p;
-        obj.notify();
+        cur = Thread.currentThread();
     }
 
     @Override
     public void run() {
-        System.out.println("Read method started");
-        for (int i = 0; i < obj.getLen(); i++) {
+        while (obj.canRead()) {
             try {
-                obj.Read(i);
-            } catch (InterruptedException ignored) {
-                System.out.println("Ошибка ReadSyncThread");
-            }
+                obj.read();
+            } catch (InterruptedException ignored) { }
         }
+        cur.interrupt();
     }
 
 
