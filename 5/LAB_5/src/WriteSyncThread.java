@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class WriteSyncThread implements Runnable {
 
-    private volatile IntSynchronizer obj;
-    private Thread cur;
+    private final IntSynchronizer obj;
+    private final Thread cur;
 
     public WriteSyncThread(IntSynchronizer p) {
         obj = p;

@@ -86,7 +86,7 @@ public class IOMethods {
     }
 
     public static void writeFormatInt(Int o, Writer out) throws IOException {
-        out.write("Название серии: '" + o.getName() + "'\n"); ;
+        out.write("Название серии: '" + o.getName() + "'\n");
         out.write( "Тип серии: 'Серия статей'\n");
         out.write( "Кол-во статей: '" + o.getLen() + "'\n");
         out.write( "Кол-во страниц в статьях:\n");

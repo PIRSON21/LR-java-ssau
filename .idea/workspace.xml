@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a97b5b2b-44a4-490c-aff6-3d99e441ee5c" name="Changes" comment="Relocated">
-      <change beforePath="$PROJECT_DIR$/4/LAB_4/src/IOMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/4/LAB_4/src/IOMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/5/LAB_5/src/IOMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/5/LAB_5/src/IOMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/5/LAB_5/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/5/LAB_5/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/5/LAB_5/src/ReadSyncThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/5/LAB_5/src/ReadSyncThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/5/LAB_5/src/WriteSyncThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/5/LAB_5/src/WriteSyncThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +82,7 @@
       <workItem from="1713287057000" duration="165000" />
       <workItem from="1713333449609" duration="8000" />
       <workItem from="1713333511029" duration="197000" />
+      <workItem from="1713473877300" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="Created repository">
       <option name="closed" value="true" />

@@ -1,10 +1,7 @@
 import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
-
 
     public static void main(String[] s) {
         System.out.println("====ЛАБОРАТОРНАЯ РАБОТА №5====");
@@ -78,17 +75,23 @@ public class Main {
 
                     try {
                         thread2.join();
+                    } catch (InterruptedException ignored) {}
+                    try {
                         thread1.join();
+                    } catch (InterruptedException ignored) {}
+                    try {
                         checkThread1.join();
+                    } catch (InterruptedException ignored) {}
+                    try {
                         checkThread2.join();
                     } catch (InterruptedException ignored) {}
                     break;
                 case "0":
-                    System.out.println("====ЗАВЕРШЕНИЕ РАБОТЫ====");
+                    System.out.println("\n====ЗАВЕРШЕНИЕ РАБОТЫ====");
                     end = true;
                     break;
                 default:
-                    System.out.println("====ОШИБКА====");
+                    System.out.println("\n====ОШИБКА====");
                     System.out.println("Введено неправильное значение!\n");
                     break;
             }

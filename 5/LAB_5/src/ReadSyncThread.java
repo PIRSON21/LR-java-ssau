@@ -1,7 +1,7 @@
 public class ReadSyncThread implements Runnable {
 
-    private volatile IntSynchronizer obj;
-    private Thread cur;
+    private final IntSynchronizer obj;
+    private final Thread cur;
 
     public ReadSyncThread(IntSynchronizer p) {
         obj = p;

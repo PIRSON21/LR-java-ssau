@@ -1,4 +1,8 @@
+import javax.naming.spi.DirectoryManager;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main {
@@ -297,7 +301,11 @@ public class Main {
     private static File CreateNewFile(String way, String type) throws IOException {
         System.out.print("Введите название файла: ");
         String fileName = scan.nextLine();
-        File file = new File("./data/" + fileName + type);
+        File directory = new File("./data/");
+        if (!directory.exists()) {
+            directory.mkdir();
+        }
+        File file = new File(directory, fileName + type);
         if (way.equals("w")) {
             file.createNewFile();
             while (!(file.exists() && file.canWrite())) {
