@@ -33,7 +33,6 @@ public class Main {
                     try {
                         readThread.join();
                     } catch (InterruptedException ignored) {
-                        scan.nextLine();
                     }
                     try {
                         writeThread.join();
@@ -93,6 +92,7 @@ public class Main {
                 default:
                     System.out.println("\n====ОШИБКА====");
                     System.out.println("Введено неправильное значение!\n");
+                    System.out.println(choice);
                     break;
             }
 
